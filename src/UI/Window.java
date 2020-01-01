@@ -6,16 +6,17 @@ import java.awt.*;
 public class Window extends JFrame{
 
     private Login login = new Login();
+    private Main_Panel main = new Main_Panel();
 
     public Window() {
-        this.setTitle("");
+        this.setTitle("Employee Management System");
         this.setPreferredSize(new Dimension(1140, 720));
         this.setMinimumSize(new Dimension(950, 600));
         this.setMaximumSize(new Dimension(1330, 840));
-//        this.pack();
+
         this.setLocationRelativeTo(null);
 
-        this.setContentPane(login);
+        this.setContentPane(main);
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true);

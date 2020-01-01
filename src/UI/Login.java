@@ -32,7 +32,8 @@ public class Login extends JPanel{
         intropanel.setPreferredSize(new Dimension(600,700));
         lpanel.setPreferredSize(new Dimension(600, 700));
 
-        //panel
+         this.setBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5)); //to give space between border and panel
+
         this.setLayout(new BorderLayout(10,0)); //set space between panel
         intropanel.setLayout(new GridBagLayout());
         lpanel.setLayout(new GridBagLayout());
@@ -43,8 +44,6 @@ public class Login extends JPanel{
 
         this.add(intropanel, BorderLayout.WEST);
         this.add(lpanel, BorderLayout.CENTER);
-
-        this.setBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5)); //to give space between border and panel
 
         GridBagConstraints ci = new GridBagConstraints();
         ci.insets = new Insets(1,3,1,3);
@@ -105,9 +104,10 @@ public class Login extends JPanel{
             String password = String.valueOf(text_password.getPassword());
 
             System.out.println("username:" + username + "\npassword:" + password);
-            if(admin.chekadmin(username, password)) System.out.println("ayyy");
-            else System.out.println("nayyy");
+            if(admin.chekadmin(username, password)) System.out.println(username + "logged in");
 
+            text_username.setText("");
+            text_password.setText("");
         });
     }
 
