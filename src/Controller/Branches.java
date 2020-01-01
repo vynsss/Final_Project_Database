@@ -33,11 +33,12 @@ public class Branches {
         return branch;
     }
 
-    public ArrayList<Branch> branch(int id, String address){
+    public ArrayList<Branch> branch(int id, String address, String city){
         ArrayList<Branch> branch = new ArrayList<Branch>();
         for(int i = 0; i< getBranches().size(); i++) {
             if (getBranches().get(i).getId() == id) branch.add(getBranches().get(i));
-            else if (getBranches().get(i).getAddress() == address) branch.add(getBranches().get(i));
+            else if (getBranches().get(i).getAddress().contains(address)) branch.add(getBranches().get(i));
+            else if (getBranches().get(i).getCity().equals(city)) branch.add(getBranches().get(i));
         }
         return branch;
     }

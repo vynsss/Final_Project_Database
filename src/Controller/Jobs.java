@@ -37,7 +37,7 @@ public class Jobs {
         ArrayList<Job> job = new ArrayList<Job>();
         for(int i = 0; i< getJobs().size(); i++) {
             if (getJobs().get(i).getId() == id) job.add(getJobs().get(i));
-            else if (getJobs().get(i).getName() == name) job.add(getJobs().get(i));
+            else if (getJobs().get(i).getName().contains(name)) job.add(getJobs().get(i));
         }
         return job;
     }

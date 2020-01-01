@@ -38,8 +38,8 @@ public class Departments {
         ArrayList<Department> department = new ArrayList<Department>();
         for(int i = 0; i< getDepartments().size(); i++) {
             if (getDepartments().get(i).getId() == id) department.add(getDepartments().get(i));
-            else if (getDepartments().get(i).getBranch_address() == address) department.add(getDepartments().get(i));
-            else if (getDepartments().get(i).getBranch_city() == city) department.add(getDepartments().get(i));
+            else if (getDepartments().get(i).getBranch_address().equals(address)) department.add(getDepartments().get(i));
+            else if (getDepartments().get(i).getBranch_city().equals(city)) department.add(getDepartments().get(i));
         }
         return department;
     }

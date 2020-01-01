@@ -48,10 +48,10 @@ public class Histories {
         ArrayList<History> history = new ArrayList<History>();
         for(int i = 0; i< getHistory().size(); i++) {
             if (getHistory().get(i).getId() == id) history.add(getHistory().get(i));
-            else if (getHistory().get(i).getFirst_name() == fname) history.add(getHistory().get(i));
-            else if (getHistory().get(i).getLast_name() == lname) history.add(getHistory().get(i));
-            else if (getHistory().get(i).getBranch_address() == address) history.add(getHistory().get(i));
-            else if (getHistory().get(i).getBranch_city() == city) history.add(getHistory().get(i));
+            else if (getHistory().get(i).getFirst_name().equals(fname)) history.add(getHistory().get(i));
+            else if (getHistory().get(i).getLast_name().equals(lname)) history.add(getHistory().get(i));
+            else if (getHistory().get(i).getBranch_address().contains(address)) history.add(getHistory().get(i));
+            else if (getHistory().get(i).getBranch_city().equals(city)) history.add(getHistory().get(i));
         }
         return history;
     }

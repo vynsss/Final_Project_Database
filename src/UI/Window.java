@@ -9,9 +9,9 @@ public class Window extends JFrame{
 
     public Window() {
         this.setTitle("");
-        this.setPreferredSize(new Dimension(950, 600));
-        this.setMinimumSize(new Dimension(893, 564));
-        this.setMaximumSize(new Dimension(1140, 720));
+        this.setPreferredSize(new Dimension(1140, 720));
+        this.setMinimumSize(new Dimension(950, 600));
+        this.setMaximumSize(new Dimension(1330, 840));
 //        this.pack();
         this.setLocationRelativeTo(null);
 

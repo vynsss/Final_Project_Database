@@ -20,7 +20,8 @@ public class Employees {
             ResultSet myrs = connect.mystmt().executeQuery("SELECT employee.employee_id, employee.first_name, employee.last_name, employee.email, employee.phone_number, job.job_name, employee.salary, department.department_name, branch.branch_address, branch.branch_city FROM history" +
                     "INNER JOIN department ON department.department_id = history.department_id" +
                     "INNER JOIN branch ON department.branch_id = branch.branch_id" +
-                    "INNER JOIN job ON job.job_id = history.job_id");
+                    "INNER JOIN job ON job.job_id = history.job_id" +
+                    "ORDER BY employee.employee_id DESC");
             while(myrs.next()){
                 emp = new Employee(
                         myrs.getInt("employee_id"),
@@ -47,13 +48,13 @@ public class Employees {
         ArrayList<Employee> employee = new ArrayList<Employee>();
         for(int i = 0; i< getEmployee().size(); i++) {
             if (getEmployee().get(i).getId() == id) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getFirst_name() == fname) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getLast_name() == lname) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getEmail() == email) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getPhone_number() == phone_number) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getJob_name() == job_name) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getBranch_address() == address) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getBranch_city() == city) employee.add(getEmployee().get(i));
+            else if (getEmployee().get(i).getFirst_name().equals(fname)) employee.add(getEmployee().get(i));
+            else if (getEmployee().get(i).getLast_name().equals(lname)) employee.add(getEmployee().get(i));
+            else if (getEmployee().get(i).getEmail().contains(email)) employee.add(getEmployee().get(i));
+            else if (getEmployee().get(i).getPhone_number().contains(phone_number)) employee.add(getEmployee().get(i));
+            else if (getEmployee().get(i).getJob_name().contains(job_name)) employee.add(getEmployee().get(i));
+            else if (getEmployee().get(i).getBranch_address().contains(address)) employee.add(getEmployee().get(i));
+            else if (getEmployee().get(i).getBranch_city().equals(city)) employee.add(getEmployee().get(i));
         }
         return employee;
     }

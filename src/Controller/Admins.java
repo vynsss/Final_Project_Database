@@ -35,8 +35,9 @@ public class Admins {
     //to check the authentication when someone is logging in or someone want to make a new user
     public boolean chekadmin(String username, String password){
         for(int i = 0; i< getJobs().size(); i++) {
-            if (getJobs().get(i).getUsername() == username && getJobs().get(i).getPassword() == password) return true;
-            else if (getJobs().get(i).getUsername() == username) return false; // need to check if this work or nah
+            if (getJobs().get(i).getUsername().equals(username) && getJobs().get(i).getPassword().equals(password)) return true;
+            else if (getJobs().get(i).getUsername().equals(username)) return false; // need to check if this work or nah
+            System.out.println("hmmm");
         }
         return false;
     }
