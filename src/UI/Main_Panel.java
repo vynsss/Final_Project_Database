@@ -5,6 +5,8 @@ import java.awt.*;
 
 public class Main_Panel extends JPanel {
 
+    vEmployee ve = new vEmployee();
+
     //JPanel
     private JPanel menu = new JPanel();
     //JButton
@@ -31,6 +33,7 @@ public class Main_Panel extends JPanel {
         menu.setBackground(new Color(223, 216, 220));
 
         this.add(menu, BorderLayout.WEST);
+        this.add(ve, BorderLayout.CENTER);
 
         Color button_bg = new Color(210, 193, 206);
         b_employee.setFont(new Font("Courier", Font.BOLD, 20));
