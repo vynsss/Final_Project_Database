@@ -17,10 +17,10 @@ public class Employees {
         ArrayList<Employee> employee = new ArrayList<Employee>();
         Employee emp;
         try {
-            ResultSet myrs = connect.mystmt().executeQuery("SELECT employee.employee_id, employee.first_name, employee.last_name, employee.email, employee.phone_number, job.job_name, employee.salary, department.department_name, branch.branch_address, branch.branch_city FROM history" +
-                    "INNER JOIN department ON department.department_id = history.department_id" +
-                    "INNER JOIN branch ON department.branch_id = branch.branch_id" +
-                    "INNER JOIN job ON job.job_id = history.job_id" +
+            ResultSet myrs = connect.mystmt().executeQuery("SELECT employee.employee_id, employee.first_name, employee.last_name, employee.email, employee.phone_number, job.job_name, employee.salary, department.department_name, branch.branch_address, branch.branch_city FROM employee " +
+                    "INNER JOIN department ON department.department_id = employee.department_id " +
+                    "INNER JOIN branch ON department.branch_id = branch.branch_id " +
+                    "INNER JOIN job ON job.job_id = employee.job_id " +
                     "ORDER BY employee.employee_id DESC");
             while(myrs.next()){
                 emp = new Employee(
