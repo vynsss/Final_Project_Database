@@ -1,15 +1,14 @@
 package UI;
 
 import Controller.Employees;
-import Controller.Histories;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class vEmployee extends JPanel {
+public class view_Employee extends JPanel {
     Employees e = new Employees();
-    Histories h = new Histories();
+    add_Employee ae = new add_Employee();
 
     //JPanel
     private JPanel view = new JPanel();
@@ -20,10 +19,11 @@ public class vEmployee extends JPanel {
     //JButton
     private JButton b_search = new JButton("Search");
     private JButton b_cancel = new JButton("Cancel");
+    private JButton b_add = new JButton("Add");
     //JTable
     private JTable table = new JTable();
 
-    public vEmployee(){
+    public view_Employee(){
         this.setSize(new Dimension(870, 760));
         this.setLayout(new BorderLayout());
 
@@ -31,6 +31,8 @@ public class vEmployee extends JPanel {
         view.setLayout(new GridBagLayout());
         view.setBackground(new Color(241, 240, 232));
         this.add(view, BorderLayout.CENTER);
+
+        Color bc = new Color(173, 196, 206);
 
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(3,3,3,10);
@@ -45,12 +47,12 @@ public class vEmployee extends JPanel {
         c.gridx = 7; c.gridy = 0; c.gridwidth = 2;
         b_search.setBorderPainted(false);
         b_search.setFocusPainted(false);
-        b_search.setBackground(new Color(173, 196, 206));
+        b_search.setBackground(bc);
         view.add(b_search, c);
         c.gridx = 9; c.gridy = 0; c.gridwidth = 2;
         b_cancel.setBorderPainted(false);
         b_cancel.setFocusPainted(false);
-        b_cancel.setBackground(new Color(173, 196, 206));
+        b_cancel.setBackground(bc);
         view.add(b_cancel, c);
 
         System.out.println(e.getEmployee().size());
@@ -58,12 +60,24 @@ public class vEmployee extends JPanel {
         table.setPreferredSize(new Dimension(870, 760));
         table();
         c.gridx = 0; c.gridy = 1; c.gridwidth = 11;
-        c.weightx = 1.0; c.weighty = 1.0;
+        c.weighty = 1.0;
         JScrollPane pane = new JScrollPane(table);
 //        pane.setBounds(10, 218, 870, 700);
         view.add(pane, c);
 
+        c.gridx = 10; c.gridy = 2; c.gridwidth = 1; c.weighty = .0;
+        b_add.setBorderPainted(false);
+        b_add.setFocusPainted(false);
+        b_add.setBackground(bc);
+        view.add(b_add, c);
+
         view.setVisible(true);
+
+        b_add.addActionListener(e -> {
+            this.removeAll();
+            this.add(ae);
+            this.validate();
+        });
     }
 
     private void table(){

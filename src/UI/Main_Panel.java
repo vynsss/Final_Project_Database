@@ -5,10 +5,12 @@ import java.awt.*;
 
 public class Main_Panel extends JPanel {
 
-    vEmployee ve = new vEmployee();
+    view_Employee ve = new view_Employee();
+    add_Employee ae = new add_Employee();
 
     //JPanel
     private JPanel menu = new JPanel();
+    private JPanel temp = new JPanel();
     //JButton
     private JButton b_employee = new JButton("Employees");
     private JButton b_department = new JButton("Departments");
@@ -22,24 +24,28 @@ public class Main_Panel extends JPanel {
     public Main_Panel() {
         this.setSize(1140, 720);
         menu.setPreferredSize(new Dimension(270, 760));
+        temp.setPreferredSize(new Dimension(870, 760));
 
         this.setBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5));
         menu.setBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5));
 
         this.setLayout(new BorderLayout(10, 0));
         menu.setLayout(new GridLayout(7, 0, 0, 5));
+        temp.setLayout(new BorderLayout());
 
         this.setBackground(new Color(238, 224, 201));
         menu.setBackground(new Color(223, 216, 220));
 
         this.add(menu, BorderLayout.WEST);
-        this.add(ve, BorderLayout.CENTER);
+        this.add(temp, BorderLayout.CENTER);
+        temp.add(ve, BorderLayout.CENTER);
 
+        Color click_bg = new Color(180, 186, 212);
         Color button_bg = new Color(210, 193, 206);
         b_employee.setFont(new Font("Courier", Font.BOLD, 20));
         b_employee.setBorderPainted(false);
         b_employee.setFocusPainted(false);
-        b_employee.setBackground(button_bg);
+        b_employee.setBackground(click_bg);
 
         b_department.setFont(new Font("Courier", Font.BOLD, 20));
         b_department.setBorderPainted(false);
@@ -70,6 +76,31 @@ public class Main_Panel extends JPanel {
         menu.add(l_space2);
 
         menu.setVisible(true);
+        temp.setVisible(true);
         this.setVisible(true);
+
+        b_employee.addActionListener(e -> {
+            b_employee.setBackground(click_bg);
+            b_department.setBackground(button_bg);
+            b_job.setBackground(button_bg);
+            b_branch.setBackground(button_bg);
+            b_admin.setBackground(button_bg);
+
+            temp.removeAll();
+            temp.add(ve);
+//            temp.paint();
+            this.revalidate();
+        });
+        b_department.addActionListener(e -> {
+            b_employee.setBackground(button_bg);
+            b_department.setBackground(click_bg);
+            b_job.setBackground(button_bg);
+            b_branch.setBackground(button_bg);
+            b_admin.setBackground(button_bg);
+
+            temp.removeAll();
+            temp.add(ae);
+            temp.revalidate();
+        });
     }
 }

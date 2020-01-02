@@ -17,10 +17,10 @@ public class Histories {
         ArrayList<History> history = new ArrayList<History>();
         History h;
         try {
-            ResultSet myrs = connect.mystmt().executeQuery("SELECT history.employee_id, employee.first_name, employee.last_name, history.hire_date, history.start_date, history.end_date, job.job_name, department.department_name, branch.branch_address, branch.branch_city FROM history" +
-                    "INNER JOIN department ON department.department_id = history.department_id" +
-                    "INNER JOIN branch ON department.branch_id = branch.branch_id" +
-                    "INNER JOIN job ON job.job_id = history.job_id" +
+            ResultSet myrs = connect.mystmt().executeQuery("SELECT history.employee_id, employee.first_name, employee.last_name, history.hire_date, history.end_date, job.job_name, department.department_name, branch.branch_address, branch.branch_city FROM history" +
+                    "INNER JOIN department ON department.department_id = history.department_id " +
+                    "INNER JOIN branch ON department.branch_id = branch.branch_id " +
+                    "INNER JOIN job ON job.job_id = history.job_id " +
                     "INNER JOIN employee ON employee.employee_id = history.employee_id");
             while(myrs.next()){
                 h = new History(
@@ -28,7 +28,6 @@ public class Histories {
                         myrs.getString("first_name"),
                         myrs.getString("last_name"),
                         myrs.getString("hire_date"),
-                        myrs.getString("start_date"),
                         myrs.getString("end_date"),
                         myrs.getString("job_name"),
                         myrs.getString("department_name"),
@@ -57,13 +56,12 @@ public class Histories {
     }
 
     //need to enter while entering new data for employee
-    public void addHistory(int id, int job_id, int department_id){
+    public void addHistory(int job_id, int department_id){
         try {
-            PreparedStatement prepstmt =  connect.prepstmt("INSERT INTO history(employee_id, hire_date, start_date, job_id, department_id) " +
-                    "VALUES(?,CURDATE(),CURDATE(),?,?)");
-            prepstmt.setInt(1, id);
-            prepstmt.setInt(2, job_id);
-            prepstmt.setInt(3, department_id);
+            PreparedStatement prepstmt =  connect.prepstmt("INSERT INTO history(hire_dat, job_id, department_id) " +
+                    "VALUES(CURDATE(),?,?)");
+            prepstmt.setInt(1, job_id);
+            prepstmt.setInt(2, department_id);
 
             int i = prepstmt.executeUpdate();
             if(i > 0){
@@ -81,7 +79,7 @@ public class Histories {
             prepstmt.setInt(1, id);
             int i = prepstmt.executeUpdate();
             if (i > 0) {
-                System.out.println("update hisotry");
+                System.out.println("update history");
             }
         } catch (SQLException e) {
             e.printStackTrace();
