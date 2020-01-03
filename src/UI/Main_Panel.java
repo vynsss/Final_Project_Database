@@ -106,7 +106,7 @@ public class Main_Panel extends JPanel {
             b_admin.setBackground(button_bg);
 
             temp.removeAll();
-            temp.add(new add_Employee());
+            temp.add(new view_Job());
             this.revalidate();
         });
         b_branch.addActionListener(e -> {
