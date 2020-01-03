@@ -44,12 +44,12 @@ public class Departments {
         return department;
     }
 
-    public void addDepartment(String name, String branch_id){
+    public void addDepartment(String name, int branch_id){
         try {
             PreparedStatement prepstmt =  connect.prepstmt("INSERT INTO branch(department_name, branch_id) " +
                     "VALUES(?,?,?)");
             prepstmt.setString(1, name);
-            prepstmt.setString(2, branch_id);
+            prepstmt.setInt(2, branch_id);
 
             int i = prepstmt.executeUpdate();
             if(i > 0){

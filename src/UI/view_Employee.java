@@ -55,14 +55,11 @@ public class view_Employee extends JPanel {
         b_cancel.setBackground(bc);
         view.add(b_cancel, c);
 
-        System.out.println(e.getEmployee().size());
-
         table.setPreferredSize(new Dimension(870, 760));
         table();
         c.gridx = 0; c.gridy = 1; c.gridwidth = 11;
         c.weighty = 1.0;
         JScrollPane pane = new JScrollPane(table);
-//        pane.setBounds(10, 218, 870, 700);
         view.add(pane, c);
 
         c.gridx = 10; c.gridy = 2; c.gridwidth = 1; c.weighty = .0;
@@ -72,6 +69,20 @@ public class view_Employee extends JPanel {
         view.add(b_add, c);
 
         view.setVisible(true);
+
+        b_search.addActionListener(e -> {
+            search_table();
+            c.gridx = 0; c.gridy = 1; c.gridwidth = 11;
+            c.weighty = 1.0;
+            view.remove(pane);
+            JScrollPane s_pane = new JScrollPane(table);
+            view.add(s_pane);
+            this.validate();
+        });
+
+        b_cancel.addActionListener(e -> {
+            text_search.setText("");
+        });
 
         b_add.addActionListener(e -> {
             this.removeAll();
@@ -109,6 +120,44 @@ public class view_Employee extends JPanel {
             data[7] = e.getEmployee().get(i).getDepartment_name();
             data[8] = e.getEmployee().get(i).getBranch_address();
             data[9] = e.getEmployee().get(i).getBranch_city();
+
+            model.addRow(data);
+        }
+
+        table.setModel(model);
+    }
+
+    private void search_table(){
+        String search = text_search.getText();
+
+        DefaultTableModel model = new DefaultTableModel();
+        Object[] c_name = new Object[10];
+
+        c_name[0] = "ID";
+        c_name[1] = "First Name";
+        c_name[2] = "Last Name";
+        c_name[3] = "Email";
+        c_name[4] = "Phone Number";
+        c_name[5] = "Salary";
+        c_name[6] = "Job Title";
+        c_name[7] = "Department Name";
+        c_name[8] = "Branch Address";
+        c_name[9] = "Branch City";
+
+        model.setColumnIdentifiers(c_name);
+
+        Object[] data = new Object[10];
+        for(int i = 0; i < e.getEmployee().size(); i++){
+            data[0] = e.employee(search).get(i).getId();
+            data[1] = e.employee(search).get(i).getFirst_name();
+            data[2] = e.employee(search).get(i).getLast_name();
+            data[3] = e.employee(search).get(i).getEmail();
+            data[4] = e.employee(search).get(i).getPhone_number();
+            data[5] = e.employee(search).get(i).getSalary();
+            data[6] = e.employee(search).get(i).getJob_name();
+            data[7] = e.employee(search).get(i).getDepartment_name();
+            data[8] = e.employee(search).get(i).getBranch_address();
+            data[9] = e.employee(search).get(i).getBranch_city();
 
             model.addRow(data);
         }

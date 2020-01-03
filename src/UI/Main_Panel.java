@@ -5,8 +5,9 @@ import java.awt.*;
 
 public class Main_Panel extends JPanel {
 
-    view_Employee ve = new view_Employee();
-    add_Employee ae = new add_Employee();
+    view_Employee ve;
+    add_Employee ae;
+    view_Department vd;
 
     //JPanel
     private JPanel menu = new JPanel();
@@ -38,7 +39,7 @@ public class Main_Panel extends JPanel {
 
         this.add(menu, BorderLayout.WEST);
         this.add(temp, BorderLayout.CENTER);
-        temp.add(ve, BorderLayout.CENTER);
+        temp.add(new view_Employee(), BorderLayout.CENTER);
 
         Color click_bg = new Color(180, 186, 212);
         Color button_bg = new Color(210, 193, 206);
@@ -87,8 +88,7 @@ public class Main_Panel extends JPanel {
             b_admin.setBackground(button_bg);
 
             temp.removeAll();
-            temp.add(ve);
-//            temp.paint();
+            temp.add(new view_Employee());
             this.revalidate();
         });
         b_department.addActionListener(e -> {
@@ -99,8 +99,41 @@ public class Main_Panel extends JPanel {
             b_admin.setBackground(button_bg);
 
             temp.removeAll();
-            temp.add(ae);
-            temp.revalidate();
+            temp.add(new view_Department());
+            this.revalidate();
+        });
+        b_job.addActionListener(e -> {
+            b_employee.setBackground(button_bg);
+            b_department.setBackground(button_bg);
+            b_job.setBackground(click_bg);
+            b_branch.setBackground(button_bg);
+            b_admin.setBackground(button_bg);
+
+            temp.removeAll();
+            temp.add(new add_Employee());
+            this.revalidate();
+        });
+        b_branch.addActionListener(e -> {
+            b_employee.setBackground(button_bg);
+            b_department.setBackground(button_bg);
+            b_job.setBackground(button_bg);
+            b_branch.setBackground(click_bg);
+            b_admin.setBackground(button_bg);
+
+            temp.removeAll();
+            temp.add(new add_Employee());
+            this.revalidate();
+        });
+        b_admin.addActionListener(e -> {
+            b_employee.setBackground(button_bg);
+            b_department.setBackground(button_bg);
+            b_job.setBackground(button_bg);
+            b_branch.setBackground(button_bg);
+            b_admin.setBackground(click_bg);
+
+            temp.removeAll();
+            temp.add(new add_Employee());
+            this.revalidate();
         });
     }
 }

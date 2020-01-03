@@ -44,17 +44,17 @@ public class Employees {
         return employee;
     }
 
-    public ArrayList<Employee> employee(int id, String fname, String lname, String email, String phone_number, String job_name, String address, String city){
+    public ArrayList<Employee> employee(String search){
         ArrayList<Employee> employee = new ArrayList<Employee>();
         for(int i = 0; i< getEmployee().size(); i++) {
-            if (getEmployee().get(i).getId() == id) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getFirst_name().equals(fname)) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getLast_name().equals(lname)) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getEmail().contains(email)) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getPhone_number().contains(phone_number)) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getJob_name().contains(job_name)) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getBranch_address().contains(address)) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getBranch_city().equals(city)) employee.add(getEmployee().get(i));
+            if (getEmployee().get(i).getId() == Integer.parseInt(search)) employee.add(getEmployee().get(i));
+            else if (getEmployee().get(i).getFirst_name().equals(search)) employee.add(getEmployee().get(i));
+            else if (getEmployee().get(i).getLast_name().equals(search)) employee.add(getEmployee().get(i));
+            else if (getEmployee().get(i).getEmail().contains(search)) employee.add(getEmployee().get(i));
+            else if (getEmployee().get(i).getPhone_number().contains(search)) employee.add(getEmployee().get(i));
+            else if (getEmployee().get(i).getJob_name().contains(search)) employee.add(getEmployee().get(i));
+            else if (getEmployee().get(i).getBranch_address().contains(search)) employee.add(getEmployee().get(i));
+            else if (getEmployee().get(i).getBranch_city().equals(search)) employee.add(getEmployee().get(i));
         }
         return employee;
     }
