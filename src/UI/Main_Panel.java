@@ -5,10 +5,6 @@ import java.awt.*;
 
 public class Main_Panel extends JPanel {
 
-    view_Employee ve;
-    add_Employee ae;
-    view_Department vd;
-
     //JPanel
     private JPanel menu = new JPanel();
     private JPanel temp = new JPanel();
@@ -121,7 +117,7 @@ public class Main_Panel extends JPanel {
             b_admin.setBackground(button_bg);
 
             temp.removeAll();
-            temp.add(new add_Employee());
+            temp.add(new view_Branch());
             this.revalidate();
         });
         b_admin.addActionListener(e -> {
