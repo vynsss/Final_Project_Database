@@ -1,6 +1,5 @@
 package Management_System.UI;
 
-import Management_System.Controller.Employees;
 import Management_System.Controller.Histories;
 
 import javax.swing.*;
@@ -13,10 +12,8 @@ public class view_allEmployee extends JPanel {
     //JPanel
     private JPanel view = new JPanel();
     //JLabel
-    private JLabel l_id = new JLabel("ID:");
     private JLabel l_search = new JLabel("Search:");
     //Field
-    private JTextField text_id = new JTextField(20);
     private JTextField text_search = new JTextField(20);
     //JButton
     private JButton b_search = new JButton("Search");
@@ -39,21 +36,17 @@ public class view_allEmployee extends JPanel {
 
         c.weightx = 1.0; c.fill = c.BOTH;
         c.gridx = 0; c.gridy = 0; c.gridwidth = 2;
-        view.add(l_id, c);
-        c.gridx = 2; c.gridy = 0; c.gridwidth = 2;
-        view.add(text_id, c);
-        c.gridx = 4; c.gridy = 0; c.gridwidth = 2;
         view.add(l_search, c);
-        c.gridx = 6; c.gridy = 0; c.gridwidth = 3;
+        c.gridx = 2; c.gridy = 0; c.gridwidth = 3;
         view.add(text_search, c);
-        c.gridx = 9; c.gridy = 0; c.gridwidth = 2;
+        c.gridx = 5; c.gridy = 0; c.gridwidth = 2;
         b_search.setBorderPainted(false);
         b_search.setFocusPainted(false);
         b_search.setBackground(bc);
         view.add(b_search, c);
         table.setPreferredSize(new Dimension(870, 760));
         table();
-        c.gridx = 0; c.gridy = 1; c.gridwidth = 11;
+        c.gridx = 0; c.gridy = 1; c.gridwidth = 7;
         c.weighty = 1.0;
         JScrollPane pane = new JScrollPane(table);
         view.add(pane, c);
@@ -61,10 +54,7 @@ public class view_allEmployee extends JPanel {
         view.setVisible(true);
 
         b_search.addActionListener(e -> {
-            String temp_id = text_id.getText();
             String search = text_search.getText();
-            int id;
-
             new search_Employee(search);
         });
 
