@@ -1,13 +1,15 @@
 package Management_System.UI;
 
 import Management_System.Controller.Employees;
+import Management_System.Controller.Histories;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class view_Employee extends JPanel {
-    Employees e = new Employees();
+    Employees em = new Employees();
+    Histories h = new Histories();
     add_Employee ae = new add_Employee();
 
     //JPanel
@@ -18,8 +20,8 @@ public class view_Employee extends JPanel {
     private JTextField text_search = new JTextField(20);
     //JButton
     private JButton b_search = new JButton("Search");
-    private JButton b_cancel = new JButton("Cancel");
     private JButton b_add = new JButton("Add");
+    private JButton b_quit = new JButton("Quit");
     //JTable
     private JTable table = new JTable();
 
@@ -49,20 +51,21 @@ public class view_Employee extends JPanel {
         b_search.setFocusPainted(false);
         b_search.setBackground(bc);
         view.add(b_search, c);
-        c.gridx = 9; c.gridy = 0; c.gridwidth = 2;
-        b_cancel.setBorderPainted(false);
-        b_cancel.setFocusPainted(false);
-        b_cancel.setBackground(bc);
-        view.add(b_cancel, c);
 
         table.setPreferredSize(new Dimension(870, 760));
         table();
-        c.gridx = 0; c.gridy = 1; c.gridwidth = 11;
+        c.gridx = 0; c.gridy = 1; c.gridwidth = 9;
         c.weighty = 1.0;
         JScrollPane pane = new JScrollPane(table);
         view.add(pane, c);
 
-        c.gridx = 10; c.gridy = 2; c.gridwidth = 1; c.weighty = .0;
+        c.weighty = .0;
+        c.gridx = 7; c.gridy = 2; c.gridwidth = 1;
+        b_quit.setBorderPainted(false);
+        b_quit.setFocusPainted(false);
+        b_quit.setBackground(bc);
+        view.add(b_quit, c);
+        c.gridx = 8; c.gridy = 2; c.gridwidth = 1;
         b_add.setBorderPainted(false);
         b_add.setFocusPainted(false);
         b_add.setBackground(bc);
@@ -73,10 +76,16 @@ public class view_Employee extends JPanel {
         b_search.addActionListener(e -> {
             String search = text_search.getText();
             new search_Employee(search);
+            text_search.setText("");
         });
 
-        b_cancel.addActionListener(e -> {
-            text_search.setText("");
+        b_quit.addActionListener(e -> {
+            int column = 0;
+            int row = table.getSelectedRow();
+            int id = Integer.parseInt(table.getModel().getValueAt(row, column).toString());
+
+            h.updateHistory(id);
+            this.revalidate();
         });
 
         b_add.addActionListener(e -> {
@@ -104,17 +113,17 @@ public class view_Employee extends JPanel {
         model.setColumnIdentifiers(c_name);
 
         Object[] data = new Object[10];
-        for(int i = 0; i < e.getEmployee().size(); i++){
-            data[0] = e.getEmployee().get(i).getId();
-            data[1] = e.getEmployee().get(i).getFirst_name();
-            data[2] = e.getEmployee().get(i).getLast_name();
-            data[3] = e.getEmployee().get(i).getEmail();
-            data[4] = e.getEmployee().get(i).getPhone_number();
-            data[5] = e.getEmployee().get(i).getSalary();
-            data[6] = e.getEmployee().get(i).getJob_name();
-            data[7] = e.getEmployee().get(i).getDepartment_name();
-            data[8] = e.getEmployee().get(i).getBranch_address();
-            data[9] = e.getEmployee().get(i).getBranch_city();
+        for(int i = 0; i < em.getEmployee().size(); i++){
+            data[0] = em.getEmployee().get(i).getId();
+            data[1] = em.getEmployee().get(i).getFirst_name();
+            data[2] = em.getEmployee().get(i).getLast_name();
+            data[3] = em.getEmployee().get(i).getEmail();
+            data[4] = em.getEmployee().get(i).getPhone_number();
+            data[5] = em.getEmployee().get(i).getSalary();
+            data[6] = em.getEmployee().get(i).getJob_name();
+            data[7] = em.getEmployee().get(i).getDepartment_name();
+            data[8] = em.getEmployee().get(i).getBranch_address();
+            data[9] = em.getEmployee().get(i).getBranch_city();
 
             model.addRow(data);
         }

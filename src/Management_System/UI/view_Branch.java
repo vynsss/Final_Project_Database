@@ -18,7 +18,7 @@ public class view_Branch extends JPanel {
     private JTextField text_search = new JTextField(20);
     //JButton
     private JButton b_search = new JButton("Search");
-    private JButton b_cancel = new JButton("Cancel");
+    private JButton b_delete = new JButton("Delete");
     private JButton b_add = new JButton("Add");
     //JTable
     private JTable table = new JTable();
@@ -50,20 +50,20 @@ public class view_Branch extends JPanel {
         b_search.setFocusPainted(false);
         b_search.setBackground(bc);
         view.add(b_search, c);
-        c.gridx = 9; c.gridy = 0; c.gridwidth = 2;
-        b_cancel.setBorderPainted(false);
-        b_cancel.setFocusPainted(false);
-        b_cancel.setBackground(bc);
-        view.add(b_cancel, c);
 
         table.setPreferredSize(new Dimension(870, 760));
         table();
-        c.gridx = 0; c.gridy = 1; c.gridwidth = 11;
+        c.gridx = 0; c.gridy = 1; c.gridwidth = 9;
         c.weighty = 1.0;
         JScrollPane pane = new JScrollPane(table);
         view.add(pane, c);
 
-        c.gridx = 10; c.gridy = 2; c.gridwidth = 1; c.weighty = .0;
+        c.gridx = 7; c.gridy = 0; c.gridwidth = 1; c.weighty = .0;
+        b_delete.setBorderPainted(false);
+        b_delete.setFocusPainted(false);
+        b_delete.setBackground(bc);
+        view.add(b_delete, c);
+        c.gridx = 8; c.gridy = 2; c.gridwidth = 1;
         b_add.setBorderPainted(false);
         b_add.setFocusPainted(false);
         b_add.setBackground(bc);
@@ -74,9 +74,15 @@ public class view_Branch extends JPanel {
         b_search.addActionListener(e -> {
             String search = text_search.getText();
             new search_Branch(search);
+            text_search.setText("");
         });
 
-        b_cancel.addActionListener(e -> {
+        b_delete.addActionListener(e -> {
+            int column = 0;
+            int row = table.getSelectedRow();
+            int id = Integer.parseInt(table.getModel().getValueAt(row, column).toString());
+
+            b.deleteBranch(id);
             text_search.setText("");
         });
 
