@@ -37,7 +37,7 @@ public class Departments {
     public ArrayList<Department> department(String search){
         ArrayList<Department> department = new ArrayList<Department>();
         for(int i = 0; i< getDepartments().size(); i++) {
-            if (getDepartments().get(i).getId().equals(search) || getDepartments().get(i).getBranch_address().equals(search) || getDepartments().get(i).getBranch_city().equals(search)) department.add(getDepartments().get(i));
+            if (getDepartments().get(i).getId().equals(search) || getDepartments().get(i).getName().equals(search) || getDepartments().get(i).getBranch_address().equals(search) || getDepartments().get(i).getBranch_city().equals(search)) department.add(getDepartments().get(i));
         }
         return department;
     }
