@@ -46,8 +46,8 @@ public class Departments {
 
     public void addDepartment(String name, int branch_id){
         try {
-            PreparedStatement prepstmt =  connect.prepstmt("INSERT INTO branch(department_name, branch_id) " +
-                    "VALUES(?,?,?)");
+            PreparedStatement prepstmt =  connect.prepstmt("INSERT INTO department(department_name, branch_id) " +
+                    "VALUES(?,?)");
             prepstmt.setString(1, name);
             prepstmt.setInt(2, branch_id);
 

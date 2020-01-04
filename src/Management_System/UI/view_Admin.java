@@ -75,6 +75,7 @@ public class view_Admin extends JPanel{
         b_log_out.addActionListener(e -> {
                 ms.getWindow().setLogin(new Login());
                 ms.getWindow().setContentPane(ms.getWindow().getLogin());
+                ms.getWindow().revalidate();
         });
     }
 }

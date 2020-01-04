@@ -52,6 +52,8 @@ public class add_Department extends JPanel {
             int branch_id = Integer.parseInt(text_branch_id.getText());
 
             d.addDepartment(name, branch_id);
+
+
         });
     }
 }

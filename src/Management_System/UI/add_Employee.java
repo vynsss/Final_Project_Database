@@ -18,7 +18,7 @@ public class add_Employee extends JPanel{
     private JLabel l_phone_number   = new JLabel("Phone Number                       :");
     private JLabel l_job_id         = new JLabel("Job ID                            :");
     private JLabel l_department_id  = new JLabel("Department ID                   :");
-    private JLabel l_salary         = new JLabel("Start                            :");
+    private JLabel l_salary         = new JLabel("Salary                            :");
     //Field
     private JTextField text_fname = new JTextField(30);
     private JTextField text_lname = new JTextField(30);
@@ -82,13 +82,13 @@ public class add_Employee extends JPanel{
 
 
         b_add.addActionListener(e -> {
-            String fname = l_fname.getText();
-            String lname = l_lname.getText();
-            String email = l_email.getText();
-            String phone_number = l_phone_number.getText();
-            int job_id = Integer.parseInt(l_job_id.getText());
-            int department_id = Integer.parseInt(l_department_id.getText());
-            Double salary = Double.parseDouble(l_salary.getText());
+            String fname = text_fname.getText();
+            String lname = text_lname.getText();
+            String email = text_email.getText();
+            String phone_number = text_phone_number.getText();
+            int job_id = Integer.parseInt(text_job_id.getText());
+            int department_id = Integer.parseInt(text_department_id.getText());
+            Double salary = Double.parseDouble(text_salary.getText());
 
             h.addHistory(job_id, department_id);
             em.addEmployee(fname, lname, email, phone_number, job_id, department_id, salary);

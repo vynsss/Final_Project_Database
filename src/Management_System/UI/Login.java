@@ -1,12 +1,14 @@
 package Management_System.UI;
 
 import Management_System.Controller.Admins;
+import Management_System.Management_System;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Login extends JPanel{
     Admins admin = new Admins();
+    Management_System ms = new Management_System();
 
     //panel
     private JPanel lpanel = new JPanel();
@@ -71,6 +73,8 @@ public class Login extends JPanel{
 
 
         //lpanel
+        Color bc = new Color(173, 196, 206);
+
         l_login.setFont(new Font("Helvetica Neue", Font.BOLD, 25));
         ci.gridx = 0; ci.gridy = 1; ci.gridwidth = 2; ci.gridheight = 2; ci.weightx = .2;
         lpanel.add(l_login, ci);
@@ -91,6 +95,10 @@ public class Login extends JPanel{
 
         b_login.setBounds(395, 270, 100, 25);
         ci.gridx = 1; ci.gridy = 6; ci.gridwidth = 1;
+        b_login.setBorderPainted(false);
+        b_login.setFocusPainted(false);
+        b_login.setBackground(bc);
+        b_login.setFont(new Font("Helvetica", Font.BOLD, 20));
         lpanel.add(b_login, ci);
 
 
@@ -104,7 +112,11 @@ public class Login extends JPanel{
             String password = String.valueOf(text_password.getPassword());
 
             System.out.println("username:" + username + "\npassword:" + password);
-            if(admin.chekadmin(username, password)) System.out.println(username + "logged in");
+            if(admin.chekadmin(username, password)) {
+                ms.getWindow().setMain(new Main_Panel());
+                ms.getWindow().setContentPane(ms.getWindow().getMain());
+                ms.getWindow().revalidate();
+            };
 
             text_username.setText("");
             text_password.setText("");
