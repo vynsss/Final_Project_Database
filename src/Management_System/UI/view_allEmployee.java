@@ -55,7 +55,7 @@ public class view_allEmployee extends JPanel {
 
         b_search.addActionListener(e -> {
             String search = text_search.getText();
-            new search_Employee(search);
+            new search_allEmployee(search);
         });
 
     }

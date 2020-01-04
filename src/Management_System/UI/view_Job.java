@@ -71,7 +71,8 @@ public class view_Job extends JPanel{
         view.setVisible(true);
 
         b_search.addActionListener(e -> {
-
+            String search = text_search.getText();
+            new search_Job(search);
         });
 
         b_cancel.addActionListener(e -> {

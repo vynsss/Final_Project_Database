@@ -72,7 +72,8 @@ public class view_Branch extends JPanel {
         view.setVisible(true);
 
         b_search.addActionListener(e -> {
-
+            String search = text_search.getText();
+            new search_Branch(search);
         });
 
         b_cancel.addActionListener(e -> {
