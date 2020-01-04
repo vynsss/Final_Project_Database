@@ -1,14 +1,14 @@
-package UI;
+package Management_System.UI;
 
-import Controller.Departments;
+import Management_System.Controller.Branches;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class view_Department extends JPanel {
+public class view_Branch extends JPanel {
 
-    Departments d = new Departments();
+    Branches b = new Branches();
 
     //JPanel
     private JPanel view = new JPanel();
@@ -23,8 +23,8 @@ public class view_Department extends JPanel {
     //JTable
     private JTable table = new JTable();
 
+    public view_Branch(){
 
-    public view_Department(){
         this.setSize(new Dimension(870, 760));
         this.setLayout(new BorderLayout());
 
@@ -81,28 +81,26 @@ public class view_Department extends JPanel {
 
         b_add.addActionListener(e -> {
             this.removeAll();
-            this.add(new add_Department());
+            this.add(new add_Branch());
             this.validate();
         });
     }
 
     private void table(){
         DefaultTableModel model = new DefaultTableModel();
-        Object[] c_name = new Object[4];
+        Object[] c_name = new Object[3];
 
         c_name[0] = "ID";
-        c_name[1] = "Name";
-        c_name[2] = "Address";
-        c_name[3] = "City";
+        c_name[1] = "Address";
+        c_name[2] = "City";
 
         model.setColumnIdentifiers(c_name);
 
-        Object[] data = new Object[4];
-        for(int i = 0; i < d.getDepartments().size(); i++){
-            data[0] = d.getDepartments().get(i).getId();
-            data[1] = d.getDepartments().get(i).getName();
-            data[2] = d.getDepartments().get(i).getBranch_address();
-            data[3] = d.getDepartments().get(i).getBranch_city();
+        Object[] data = new Object[3];
+        for(int i = 0; i < b.getBranches().size(); i++){
+            data[0] = b.getBranches().get(i).getId();
+            data[1] = b.getBranches().get(i).getAddress();
+            data[2] = b.getBranches().get(i).getCity();
 
             model.addRow(data);
         }

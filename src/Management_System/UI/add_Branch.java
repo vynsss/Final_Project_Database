@@ -1,24 +1,25 @@
-package UI;
+package Management_System.UI;
 
-import Controller.Departments;
+import Management_System.Controller.Branches;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class add_Department extends JPanel {
+public class add_Branch extends JPanel{
 
-    Departments d = new Departments();
+    Branches b = new Branches();
 
     //JLabel
-    private JLabel l_department_name    = new JLabel("Deparment Name               :");
-    private JLabel l_branch_id          = new JLabel("Branch ID                        :");
+    private JLabel l_address = new JLabel("Address               :");
+    private JLabel l_city    = new JLabel("City                        :");
     //Field
-    private JTextField text_department_name = new JTextField(30);
-    private JTextField text_branch_id = new JTextField(30);
+    private JTextField text_address = new JTextField(30);
+    private JTextField text_city = new JTextField(30);
     //JButton
     private JButton b_add = new JButton("Add");
 
-    public add_Department(){
+    public add_Branch(){
+
         this.setSize(new Dimension(870, 760));
         this.setLayout(new GridBagLayout());
         this.setBackground(new Color(241, 240, 232));
@@ -30,15 +31,15 @@ public class add_Department extends JPanel {
 
         c.weightx = 1.0; c.fill = c.BOTH;
         c.gridx = 0; c.gridy = 0; c.gridwidth = 1;
-        this.add(l_department_name, c);
+        this.add(l_address, c);
         c.gridx = 0; c.gridy = 1; c.gridwidth = 1;
-        this.add(l_branch_id, c);
+        this.add(l_city, c);
 
         c.fill = c.NONE;
         c.gridx = 1; c.gridy = 0; c.gridwidth = 1;
-        this.add(text_department_name, c);
+        this.add(text_address, c);
         c.gridx = 1; c.gridy = 1; c.gridwidth = 1;
-        this.add(text_branch_id, c);
+        this.add(text_city, c);
 
         c.fill = c.BOTH;
         c.gridx = 3; c.gridy = 9; c.gridwidth = 1;
@@ -48,10 +49,10 @@ public class add_Department extends JPanel {
         this.add(b_add, c);
 
         b_add.addActionListener(e -> {
-            String name = text_department_name.getText();
-            int branch_id = Integer.parseInt(text_branch_id.getText());
+            String address = text_address.getText();
+            String city = text_city.getText();
 
-            d.addDepartment(name, branch_id);
+            b.addBranch(address, city);
         });
     }
 }

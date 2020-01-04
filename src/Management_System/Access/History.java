@@ -1,31 +1,28 @@
-package Access;
+package Management_System.Access;
 
-public class Employee {
+public class History {
 
     private int id;
+    private String hire_date;
     private String first_name;
     private String last_name;
-    private String email;
-    private String phone_number;
-    private double salary;
+    private String end_date;
     private String job_name;
     private String department_name;
     private String branch_address;
     private String branch_city;
 
-    public Employee(int id, String first_name, String last_name, String email, String phone_number, double salary, String job_name, String department_name, String branch_address, String branch_city){
+    public History(int id, String first_name, String last_name, String hire_date, String end_date, String job_name, String department_name, String branch_address, String branch_city){
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.email = email;
-        this.phone_number = phone_number;
-        this.salary = salary;
+        this.hire_date = hire_date;
+        this.end_date = end_date;
         this.job_name = job_name;
         this.department_name = department_name;
         this.branch_city = branch_city;
         this.branch_address = branch_address;
     }
-
 
     public int getId() {
         return id;
@@ -39,16 +36,12 @@ public class Employee {
         return last_name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getHire_date() {
+        return hire_date;
     }
 
-    public String getPhone_number() {
-        return phone_number;
-    }
-
-    public double getSalary() {
-        return salary;
+    public String getEnd_date() {
+        return end_date;
     }
 
     public String getJob_name() {
@@ -66,6 +59,5 @@ public class Employee {
     public String getBranch_city() {
         return branch_city;
     }
-
 
 }

@@ -1,7 +1,7 @@
-package UI;
+package Management_System.UI;
 
-import Controller.Employees;
-import Controller.Histories;
+import Management_System.Controller.Employees;
+import Management_System.Controller.Histories;
 
 import javax.swing.*;
 import java.awt.*;

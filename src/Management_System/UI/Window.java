@@ -1,4 +1,4 @@
-package UI;
+package Management_System.UI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,5 +21,22 @@ public class Window extends JFrame{
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
+
+    public Main_Panel getMain() {
+        return main;
+    }
+
+    public void setMain(Main_Panel main) {
+        this.main = main;
+    }
+
 
 }

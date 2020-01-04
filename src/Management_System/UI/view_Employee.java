@@ -1,6 +1,6 @@
-package UI;
+package Management_System.UI;
 
-import Controller.Employees;
+import Management_System.Controller.Employees;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

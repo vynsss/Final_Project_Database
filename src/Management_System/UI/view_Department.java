@@ -1,14 +1,14 @@
-package UI;
+package Management_System.UI;
 
-import Controller.Jobs;
+import Management_System.Controller.Departments;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class view_Job extends JPanel{
+public class view_Department extends JPanel {
 
-    Jobs j = new Jobs();
+    Departments d = new Departments();
 
     //JPanel
     private JPanel view = new JPanel();
@@ -23,7 +23,8 @@ public class view_Job extends JPanel{
     //JTable
     private JTable table = new JTable();
 
-    public view_Job(){
+
+    public view_Department(){
         this.setSize(new Dimension(870, 760));
         this.setLayout(new BorderLayout());
 
@@ -80,30 +81,33 @@ public class view_Job extends JPanel{
 
         b_add.addActionListener(e -> {
             this.removeAll();
-            this.add(new add_Job());
+            this.add(new add_Department());
             this.validate();
         });
     }
 
     private void table(){
         DefaultTableModel model = new DefaultTableModel();
-        Object[] c_name = new Object[3];
+        Object[] c_name = new Object[4];
 
         c_name[0] = "ID";
         c_name[1] = "Name";
-        c_name[2] = "Min. Salary";
+        c_name[2] = "Address";
+        c_name[3] = "City";
 
         model.setColumnIdentifiers(c_name);
 
-        Object[] data = new Object[3];
-        for(int i = 0; i < j.getJobs().size(); i++){
-            data[0] = j.getJobs().get(i).getId();
-            data[1] = j.getJobs().get(i).getName();
-            data[2] = j.getJobs().get(i).getMin_salary();
+        Object[] data = new Object[4];
+        for(int i = 0; i < d.getDepartments().size(); i++){
+            data[0] = d.getDepartments().get(i).getId();
+            data[1] = d.getDepartments().get(i).getName();
+            data[2] = d.getDepartments().get(i).getBranch_address();
+            data[3] = d.getDepartments().get(i).getBranch_city();
 
             model.addRow(data);
         }
 
         table.setModel(model);
     }
+
 }

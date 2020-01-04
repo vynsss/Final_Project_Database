@@ -1,7 +1,7 @@
-package Controller;
+package Management_System.Controller;
 
-import Connection.Connection;
-import Access.Employee;
+import Management_System.Connection.Connection;
+import Management_System.Access.Employee;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

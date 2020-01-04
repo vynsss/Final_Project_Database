@@ -1,6 +1,6 @@
-package UI;
+package Management_System.UI;
 
-import Controller.Admins;
+import Management_System.Controller.Admins;
 
 import javax.swing.*;
 import java.awt.*;

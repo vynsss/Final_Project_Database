@@ -1,14 +1,14 @@
-package UI;
+package Management_System.UI;
 
-import Controller.Branches;
+import Management_System.Controller.Jobs;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class view_Branch extends JPanel {
+public class view_Job extends JPanel{
 
-    Branches b = new Branches();
+    Jobs j = new Jobs();
 
     //JPanel
     private JPanel view = new JPanel();
@@ -23,8 +23,7 @@ public class view_Branch extends JPanel {
     //JTable
     private JTable table = new JTable();
 
-    public view_Branch(){
-
+    public view_Job(){
         this.setSize(new Dimension(870, 760));
         this.setLayout(new BorderLayout());
 
@@ -81,7 +80,7 @@ public class view_Branch extends JPanel {
 
         b_add.addActionListener(e -> {
             this.removeAll();
-            this.add(new add_Branch());
+            this.add(new add_Job());
             this.validate();
         });
     }
@@ -91,21 +90,20 @@ public class view_Branch extends JPanel {
         Object[] c_name = new Object[3];
 
         c_name[0] = "ID";
-        c_name[1] = "Address";
-        c_name[2] = "City";
+        c_name[1] = "Name";
+        c_name[2] = "Min. Salary";
 
         model.setColumnIdentifiers(c_name);
 
         Object[] data = new Object[3];
-        for(int i = 0; i < b.getBranches().size(); i++){
-            data[0] = b.getBranches().get(i).getId();
-            data[1] = b.getBranches().get(i).getAddress();
-            data[2] = b.getBranches().get(i).getCity();
+        for(int i = 0; i < j.getJobs().size(); i++){
+            data[0] = j.getJobs().get(i).getId();
+            data[1] = j.getJobs().get(i).getName();
+            data[2] = j.getJobs().get(i).getMin_salary();
 
             model.addRow(data);
         }
 
         table.setModel(model);
     }
-
 }

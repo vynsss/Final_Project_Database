@@ -1,24 +1,24 @@
-package UI;
+package Management_System.UI;
 
-import Controller.Jobs;
+import Management_System.Controller.Departments;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class add_Job extends JPanel{
+public class add_Department extends JPanel {
 
-    Jobs j = new Jobs();
+    Departments d = new Departments();
 
     //JLabel
-    private JLabel l_name = new JLabel("Job Name               :");
-    private JLabel l_min_salary = new JLabel("Minimum Salary                :");
+    private JLabel l_department_name    = new JLabel("Deparment Name               :");
+    private JLabel l_branch_id          = new JLabel("Branch ID                        :");
     //Field
-    private JTextField text_name = new JTextField(30);
-    private JTextField text_min_salary = new JTextField(30);
+    private JTextField text_department_name = new JTextField(30);
+    private JTextField text_branch_id = new JTextField(30);
     //JButton
     private JButton b_add = new JButton("Add");
 
-    public add_Job(){
+    public add_Department(){
         this.setSize(new Dimension(870, 760));
         this.setLayout(new GridBagLayout());
         this.setBackground(new Color(241, 240, 232));
@@ -30,15 +30,15 @@ public class add_Job extends JPanel{
 
         c.weightx = 1.0; c.fill = c.BOTH;
         c.gridx = 0; c.gridy = 0; c.gridwidth = 1;
-        this.add(l_name, c);
+        this.add(l_department_name, c);
         c.gridx = 0; c.gridy = 1; c.gridwidth = 1;
-        this.add(l_min_salary, c);
+        this.add(l_branch_id, c);
 
         c.fill = c.NONE;
         c.gridx = 1; c.gridy = 0; c.gridwidth = 1;
-        this.add(text_name, c);
+        this.add(text_department_name, c);
         c.gridx = 1; c.gridy = 1; c.gridwidth = 1;
-        this.add(text_min_salary, c);
+        this.add(text_branch_id, c);
 
         c.fill = c.BOTH;
         c.gridx = 3; c.gridy = 9; c.gridwidth = 1;
@@ -48,9 +48,10 @@ public class add_Job extends JPanel{
         this.add(b_add, c);
 
         b_add.addActionListener(e -> {
-            String address = text_name.getText();
-            double city = Double.parseDouble(text_min_salary.getText());
+            String name = text_department_name.getText();
+            int branch_id = Integer.parseInt(text_branch_id.getText());
 
-            j.addJob(address, city);
-        });}
+            d.addDepartment(name, branch_id);
+        });
+    }
 }

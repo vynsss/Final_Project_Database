@@ -1,6 +1,8 @@
-import UI.Window;
+package Management_System;
 
-public class Main {
+import Management_System.UI.Window;
+
+public class Management_System {
     private static Window window;
 
     public static void main(String[] args){

@@ -1,4 +1,4 @@
-package UI;
+package Management_System.UI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -128,7 +128,7 @@ public class Main_Panel extends JPanel {
             b_admin.setBackground(click_bg);
 
             temp.removeAll();
-            temp.add(new add_Employee());
+            temp.add(new view_Admin());
             this.revalidate();
         });
     }
