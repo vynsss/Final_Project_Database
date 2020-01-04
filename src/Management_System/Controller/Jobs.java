@@ -20,9 +20,9 @@ public class Jobs {
             ResultSet myrs = connect.mystmt().executeQuery("SELECT * FROM job ORDER BY job_name DESC");
             while(myrs.next()){
                 j = new Job(
-                        myrs.getInt("job_id"),
+                        Integer.toString(myrs.getInt("job_id")),
                         myrs.getString("job_name"),
-                        myrs.getDouble("min_salary")
+                        String.format("%.0f", myrs.getDouble("min_salary"))
                 );
                 job.add(j);
             }
@@ -33,11 +33,10 @@ public class Jobs {
         return job;
     }
 
-    public ArrayList<Job> job(int id, String name){
+    public ArrayList<Job> job(String search){
         ArrayList<Job> job = new ArrayList<Job>();
         for(int i = 0; i< getJobs().size(); i++) {
-            if (getJobs().get(i).getId() == id) job.add(getJobs().get(i));
-            else if (getJobs().get(i).getName().contains(name)) job.add(getJobs().get(i));
+            if (getJobs().get(i).getId().equals(search) || getJobs().get(i).getName().contains(search)) job.add(getJobs().get(i));
         }
         return job;
     }

@@ -2,18 +2,18 @@ package Management_System.Access;
 
 public class Employee {
 
-    private int id;
+    private String id;
     private String first_name;
     private String last_name;
     private String email;
     private String phone_number;
-    private double salary;
+    private String salary;
     private String job_name;
     private String department_name;
     private String branch_address;
     private String branch_city;
 
-    public Employee(int id, String first_name, String last_name, String email, String phone_number, double salary, String job_name, String department_name, String branch_address, String branch_city){
+    public Employee(String id, String first_name, String last_name, String email, String phone_number, String salary, String job_name, String department_name, String branch_address, String branch_city){
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -27,7 +27,7 @@ public class Employee {
     }
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -47,7 +47,7 @@ public class Employee {
         return phone_number;
     }
 
-    public double getSalary() {
+    public String getSalary() {
         return salary;
     }
 

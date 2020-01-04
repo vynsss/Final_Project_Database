@@ -20,7 +20,7 @@ public class Departments {
             ResultSet myrs = connect.mystmt().executeQuery("SELECT department.department_id, department.department_name, branch.branch_address, branch.branch_city FROM department INNER JOIN branch ON department.branch_id = branch.branch_id ORDER BY department_name DESC");
             while(myrs.next()){
                 d = new Department(
-                        myrs.getInt("department_id"),
+                        Integer.toString(myrs.getInt("department_id")),
                         myrs.getString("department_name"),
                         myrs.getString("branch_address"),
                         myrs.getString("branch_city")
@@ -34,12 +34,10 @@ public class Departments {
         return department;
     }
 
-    public ArrayList<Department> department(int id, String address, String city){
+    public ArrayList<Department> department(String search){
         ArrayList<Department> department = new ArrayList<Department>();
         for(int i = 0; i< getDepartments().size(); i++) {
-            if (getDepartments().get(i).getId() == id) department.add(getDepartments().get(i));
-            else if (getDepartments().get(i).getBranch_address().equals(address)) department.add(getDepartments().get(i));
-            else if (getDepartments().get(i).getBranch_city().equals(city)) department.add(getDepartments().get(i));
+            if (getDepartments().get(i).getId().equals(search) || getDepartments().get(i).getBranch_address().equals(search) || getDepartments().get(i).getBranch_city().equals(search)) department.add(getDepartments().get(i));
         }
         return department;
     }

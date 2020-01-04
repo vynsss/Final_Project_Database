@@ -20,7 +20,7 @@ public class Branches {
             ResultSet myrs = connect.mystmt().executeQuery("SELECT * FROM branch ORDER BY branch_city DESC");
             while(myrs.next()){
                 b = new Branch(
-                        myrs.getInt("branch_id"),
+                        Integer.toString(myrs.getInt("branch_id")),
                         myrs.getString("branch_address"),
                         myrs.getString("branch_city")
                 );
@@ -33,12 +33,10 @@ public class Branches {
         return branch;
     }
 
-    public ArrayList<Branch> branch(int id, String address, String city){
+    public ArrayList<Branch> branch(String search){
         ArrayList<Branch> branch = new ArrayList<Branch>();
         for(int i = 0; i< getBranches().size(); i++) {
-            if (getBranches().get(i).getId() == id) branch.add(getBranches().get(i));
-            else if (getBranches().get(i).getAddress().contains(address)) branch.add(getBranches().get(i));
-            else if (getBranches().get(i).getCity().equals(city)) branch.add(getBranches().get(i));
+            if (getBranches().get(i).getId().equals(search) || getBranches().get(i).getAddress().contains(search) || getBranches().get(i).getCity().equals(search)) branch.add(getBranches().get(i));
         }
         return branch;
     }

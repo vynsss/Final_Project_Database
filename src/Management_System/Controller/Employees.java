@@ -21,15 +21,17 @@ public class Employees {
                     "INNER JOIN department ON department.department_id = employee.department_id " +
                     "INNER JOIN branch ON department.branch_id = branch.branch_id " +
                     "INNER JOIN job ON job.job_id = employee.job_id " +
+                    "INNER JOIN history ON employee.employee_id = history.employee_id " +
+                    "WHERE history.end_date is null " +
                     "ORDER BY employee.employee_id DESC");
             while(myrs.next()){
                 emp = new Employee(
-                        myrs.getInt("employee_id"),
+                        Integer.toString(myrs.getInt("employee_id")),
                         myrs.getString("first_name"),
                         myrs.getString("last_name"),
                         myrs.getString("email"),
                         myrs.getString("phone_number"),
-                        myrs.getDouble("salary"),
+                        String.format("%.0f", myrs.getDouble("salary")),
                         myrs.getString("job_name"),
                         myrs.getString("department_name"),
                         myrs.getString("branch_address"),
@@ -47,14 +49,7 @@ public class Employees {
     public ArrayList<Employee> employee(String search){
         ArrayList<Employee> employee = new ArrayList<Employee>();
         for(int i = 0; i< getEmployee().size(); i++) {
-            if (getEmployee().get(i).getId() == Integer.parseInt(search)) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getFirst_name().equals(search)) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getLast_name().equals(search)) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getEmail().contains(search)) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getPhone_number().contains(search)) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getJob_name().contains(search)) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getBranch_address().contains(search)) employee.add(getEmployee().get(i));
-            else if (getEmployee().get(i).getBranch_city().equals(search)) employee.add(getEmployee().get(i));
+            if (getEmployee().get(i).getId().equals(search) || getEmployee().get(i).getFirst_name().equals(search) || getEmployee().get(i).getLast_name().equals(search) || getEmployee().get(i).getEmail().contains(search) || getEmployee().get(i).getPhone_number().contains(search) || getEmployee().get(i).getJob_name().contains(search) || getEmployee().get(i).getBranch_address().contains(search) || getEmployee().get(i).getBranch_city().equals(search)) employee.add(getEmployee().get(i));
         }
         return employee;
     }
@@ -85,7 +80,7 @@ public class Employees {
     public void updateEmployee(int id, String u_fname, String u_lname, String u_email, String u_phone_number, int u_job_id, int u_department_id, double u_salary) {
         try {
             int i;
-            if(u_fname != null && u_fname != "") {
+            if(u_fname != null || u_fname != "") {
                 PreparedStatement prepstmt = connect.prepstmt("UPDATE employee SET first_name = ? WHERE employee_id = ?");
                 prepstmt.setString(1, u_fname);
                 i = prepstmt.executeUpdate();
@@ -93,7 +88,7 @@ public class Employees {
                     System.out.println("first name updated");
                 }
             }
-            if(u_lname != null && u_lname != "") {
+            if(u_lname != null || u_lname != "") {
                 PreparedStatement prepstmt = connect.prepstmt("UPDATE employee SET last_name = ? WHERE employee_id = ?");
                 prepstmt.setString(1, u_lname);
                 i = prepstmt.executeUpdate();
@@ -101,7 +96,7 @@ public class Employees {
                     System.out.println("last name updated");
                 }
             }
-            if(u_email != null && u_email != "") {
+            if(u_email != null || u_email != "") {
                 PreparedStatement prepstmt = connect.prepstmt("UPDATE employee SET email = ? WHERE employee_id = ?");
                 prepstmt.setString(1, u_email);
                 i = prepstmt.executeUpdate();
@@ -109,7 +104,7 @@ public class Employees {
                     System.out.println("email updated");
                 }
             }
-            if(u_phone_number != null && u_phone_number != "") {
+            if(u_phone_number != null || u_phone_number != "") {
                 PreparedStatement prepstmt = connect.prepstmt("UPDATE employee SET phone_number = ? WHERE employee_id = ?");
                 prepstmt.setString(1, u_phone_number);
                 i = prepstmt.executeUpdate();

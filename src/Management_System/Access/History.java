@@ -2,7 +2,7 @@ package Management_System.Access;
 
 public class History {
 
-    private int id;
+    private String id;
     private String hire_date;
     private String first_name;
     private String last_name;
@@ -12,7 +12,7 @@ public class History {
     private String branch_address;
     private String branch_city;
 
-    public History(int id, String first_name, String last_name, String hire_date, String end_date, String job_name, String department_name, String branch_address, String branch_city){
+    public History(String id, String first_name, String last_name, String hire_date, String end_date, String job_name, String department_name, String branch_address, String branch_city){
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -24,7 +24,7 @@ public class History {
         this.branch_address = branch_address;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

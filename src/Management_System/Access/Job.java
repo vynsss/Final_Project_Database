@@ -2,17 +2,17 @@ package Management_System.Access;
 
 public class Job {
 
-    private int id;
+    private String id;
     private String name;
-    private double min_salary;
+    private String min_salary;
 
-    public Job(int id, String name, double min_salary){
+    public Job(String id, String name, String min_salary){
         this.id = id;
         this.name = name;
         this.min_salary = min_salary;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -20,7 +20,7 @@ public class Job {
         return name;
     }
 
-    public double getMin_salary() {
+    public String getMin_salary() {
         return min_salary;
     }
 
