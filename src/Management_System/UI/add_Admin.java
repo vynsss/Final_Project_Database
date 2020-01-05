@@ -52,6 +52,9 @@ public class add_Admin extends JPanel {
             String city = text_password.getText();
 
             a.addAdmin(address, city);
+
+            text_user.setText("");
+            text_password.setText("");
         });
 
     }

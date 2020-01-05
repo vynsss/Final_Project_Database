@@ -53,7 +53,8 @@ public class add_Department extends JPanel {
 
             d.addDepartment(name, branch_id);
 
-
+            text_department_name.setText("");
+            text_branch_id.setText("");
         });
     }
 }

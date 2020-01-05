@@ -52,5 +52,8 @@ public class add_Job extends JPanel{
             double city = Double.parseDouble(text_min_salary.getText());
 
             j.addJob(address, city);
+
+            text_name.setText("");
+            text_min_salary.setText("");
         });}
 }

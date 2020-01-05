@@ -53,6 +53,9 @@ public class add_Branch extends JPanel{
             String city = text_city.getText();
 
             b.addBranch(address, city);
+
+            text_address.setText("");
+            text_city.setText("");
         });
     }
 }

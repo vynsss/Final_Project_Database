@@ -92,6 +92,14 @@ public class add_Employee extends JPanel{
 
             int id = h.addHistory(job_id, department_id);
             em.addEmployee(id, fname, lname, email, phone_number, job_id, department_id, salary);
+
+            text_fname.setText("");
+            text_lname.setText("");
+            text_email.setText("");
+            text_phone_number.setText("");
+            text_job_id.setText("");
+            text_department_id.setText("");
+            text_salary.setText("");
         });
     }
 
