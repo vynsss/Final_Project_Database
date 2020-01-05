@@ -6,6 +6,7 @@ import Management_System.Access.History;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Histories {
@@ -52,20 +53,21 @@ public class Histories {
     }
 
     //need to enter while entering new data for employee
-    public void addHistory(int job_id, int department_id){
+    public int addHistory(int job_id, int department_id){
         try {
-            PreparedStatement prepstmt =  connect.prepstmt("INSERT INTO history(hire_dat, job_id, department_id) " +
-                    "VALUES(CURDATE(),?,?)");
+            PreparedStatement prepstmt =  connect.con().prepareStatement("INSERT INTO history(hire_date, job_id, department_id) VALUE(CURDATE(),?,?)", Statement.RETURN_GENERATED_KEYS);
             prepstmt.setInt(1, job_id);
             prepstmt.setInt(2, department_id);
 
             int i = prepstmt.executeUpdate();
-            if(i > 0){
-                System.out.println("is added");
+            ResultSet myrs = prepstmt.getGeneratedKeys();
+            if(myrs.next()){
+                return(myrs.getInt(1));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return -1;
     }
 
     //to update when is the end date of the employee

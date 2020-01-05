@@ -55,17 +55,18 @@ public class Employees {
     }
 
     //need to enter while entering new history for employee
-    public void addEmployee(String fname, String lname, String email, String phone_number, int job_id, int department_id, double salary){
+    public void addEmployee(int id, String fname, String lname, String email, String phone_number, int job_id, int department_id, double salary){
         try {
-            PreparedStatement prepstmt =  connect.prepstmt("INSERT INTO employee (first_name, last_name, email, phone_number, job_id, department_id, salary) " +
-                    "VALUES(?,?,?,?,?,?,?)");
-            prepstmt.setString(1, fname);
-            prepstmt.setString(2, lname);
-            prepstmt.setString(3, email);
-            prepstmt.setString(4, phone_number);
-            prepstmt.setInt(5, job_id);
-            prepstmt.setInt(6, department_id);
-            prepstmt.setDouble(7, salary);
+            PreparedStatement prepstmt =  connect.prepstmt("INSERT INTO employee (employee_id, first_name, last_name, email, phone_number, job_id, department_id, salary) " +
+                    "VALUES(?,?,?,?,?,?,?,?)");
+            prepstmt.setInt(1, id);
+            prepstmt.setString(2, fname);
+            prepstmt.setString(3, lname);
+            prepstmt.setString(4, email);
+            prepstmt.setString(5, phone_number);
+            prepstmt.setInt(6, job_id);
+            prepstmt.setInt(7, department_id);
+            prepstmt.setDouble(8, salary);
 
             int i = prepstmt.executeUpdate();
             if(i > 0){

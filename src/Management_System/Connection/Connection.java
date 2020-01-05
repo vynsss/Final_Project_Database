@@ -22,6 +22,10 @@ public class Connection {
 		
 	}
 
+	public java.sql.Connection con(){
+		return conn;
+	}
+
 	public Statement mystmt() {
 		try {
 			mystmt = conn.createStatement();

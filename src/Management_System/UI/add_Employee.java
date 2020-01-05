@@ -90,8 +90,8 @@ public class add_Employee extends JPanel{
             int department_id = Integer.parseInt(text_department_id.getText());
             Double salary = Double.parseDouble(text_salary.getText());
 
-            h.addHistory(job_id, department_id);
-            em.addEmployee(fname, lname, email, phone_number, job_id, department_id, salary);
+            int id = h.addHistory(job_id, department_id);
+            em.addEmployee(id, fname, lname, email, phone_number, job_id, department_id, salary);
         });
     }
 

@@ -58,7 +58,7 @@ public class view_Department extends JPanel {
         JScrollPane pane = new JScrollPane(table);
         view.add(pane, c);
 
-        c.gridx = 7; c.gridy = 0; c.gridwidth = 1; c.weighty = .0;
+        c.gridx = 7; c.gridy = 2; c.gridwidth = 1; c.weighty = .0;
         b_delete.setBorderPainted(false);
         b_delete.setFocusPainted(false);
         b_delete.setBackground(bc);
