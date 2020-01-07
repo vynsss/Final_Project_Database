@@ -94,19 +94,23 @@ public class view_Job extends JPanel{
 
     private void table(){
         DefaultTableModel model = new DefaultTableModel();
-        Object[] c_name = new Object[3];
+        Object[] c_name = new Object[5];
 
         c_name[0] = "ID";
         c_name[1] = "Name";
         c_name[2] = "Min. Salary";
+        c_name[3] = "Branch Address";
+        c_name[4] = "Branch City";
 
         model.setColumnIdentifiers(c_name);
 
-        Object[] data = new Object[3];
+        Object[] data = new Object[5];
         for(int i = 0; i < j.getJobs().size(); i++){
             data[0] = j.getJobs().get(i).getId();
             data[1] = j.getJobs().get(i).getName();
             data[2] = j.getJobs().get(i).getMin_salary();
+            data[3] = j.getJobs().get(i).getBranch_address();
+            data[4] = j.getJobs().get(i).getBranch_city();
 
             model.addRow(data);
         }

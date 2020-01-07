@@ -12,9 +12,11 @@ public class add_Job extends JPanel{
     //JLabel
     private JLabel l_name = new JLabel("Job Name               :");
     private JLabel l_min_salary = new JLabel("Minimum Salary                :");
+    private JLabel l_department_id = new JLabel("Department ID                :");
     //Field
     private JTextField text_name = new JTextField(30);
     private JTextField text_min_salary = new JTextField(30);
+    private JTextField text_department_id = new JTextField(30);
     //JButton
     private JButton b_add = new JButton("Add");
 
@@ -33,12 +35,16 @@ public class add_Job extends JPanel{
         this.add(l_name, c);
         c.gridx = 0; c.gridy = 1; c.gridwidth = 1;
         this.add(l_min_salary, c);
+        c.gridx = 0; c.gridy = 2; c.gridwidth = 1;
+        this.add(l_department_id, c);
 
         c.fill = c.NONE;
         c.gridx = 1; c.gridy = 0; c.gridwidth = 1;
         this.add(text_name, c);
         c.gridx = 1; c.gridy = 1; c.gridwidth = 1;
         this.add(text_min_salary, c);
+        c.gridx = 1; c.gridy = 2; c.gridwidth = 1;
+        this.add(text_department_id, c);
 
         c.fill = c.BOTH;
         c.gridx = 3; c.gridy = 9; c.gridwidth = 1;
@@ -50,8 +56,9 @@ public class add_Job extends JPanel{
         b_add.addActionListener(e -> {
             String address = text_name.getText();
             double city = Double.parseDouble(text_min_salary.getText());
+            int id = Integer.parseInt(text_department_id.getText());
 
-            j.addJob(address, city);
+            j.addJob(address, city, id);
 
             text_name.setText("");
             text_min_salary.setText("");
