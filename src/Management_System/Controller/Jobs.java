@@ -19,7 +19,7 @@ public class Jobs {
         try {
             ResultSet myrs = connect.mystmt().executeQuery("SELECT job.job_id, job.job_name, department.department_name, branch.branch_address, branch.branch_city FROM job " +
                     "INNER JOIN department ON department.department_id = job.department_id " +
-                    "INNER JOIN branch ON branch.branch_id = department.branch_id" +
+                    "INNER JOIN branch ON branch.branch_id = department.branch_id " +
                     "ORDER BY job_name DESC");
             while(myrs.next()){
                 j = new Job(

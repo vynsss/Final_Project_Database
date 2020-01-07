@@ -18,9 +18,9 @@ public class Employees {
         Employee emp;
         try {
             ResultSet myrs = connect.mystmt().executeQuery("SELECT employee.employee_id, employee.first_name, employee.last_name, employee.email, employee.phone_number, job.job_name, employee.salary, department.department_name, branch.branch_address, branch.branch_city FROM employee " +
-                    "INNER JOIN department ON department.department_id = employee.department_id " +
                     "INNER JOIN branch ON department.branch_id = branch.branch_id " +
                     "INNER JOIN job ON job.job_id = employee.job_id " +
+                    "INNER JOIN department ON department.department_id = job.department_id " +
                     "INNER JOIN history ON employee.employee_id = history.employee_id " +
                     "WHERE history.end_date is null " +
                     "ORDER BY employee.employee_id DESC");
@@ -55,18 +55,17 @@ public class Employees {
     }
 
     //need to enter while entering new history for employee
-    public void addEmployee(int id, String fname, String lname, String email, String phone_number, int job_id, int department_id, double salary){
+    public void addEmployee(int id, String fname, String lname, String email, String phone_number, int job_id, double salary){
         try {
-            PreparedStatement prepstmt =  connect.prepstmt("INSERT INTO employee (employee_id, first_name, last_name, email, phone_number, job_id, department_id, salary) " +
-                    "VALUES(?,?,?,?,?,?,?,?)");
+            PreparedStatement prepstmt =  connect.prepstmt("INSERT INTO employee (employee_id, first_name, last_name, email, phone_number, job_id, salary) " +
+                    "VALUES(?,?,?,?,?,?,?)");
             prepstmt.setInt(1, id);
             prepstmt.setString(2, fname);
             prepstmt.setString(3, lname);
             prepstmt.setString(4, email);
             prepstmt.setString(5, phone_number);
             prepstmt.setInt(6, job_id);
-            prepstmt.setInt(7, department_id);
-            prepstmt.setDouble(8, salary);
+            prepstmt.setDouble(7, salary);
 
             int i = prepstmt.executeUpdate();
             if(i > 0){
@@ -78,7 +77,7 @@ public class Employees {
     }
 
     //need to find a more efficient way
-    public void updateEmployee(int id, String u_fname, String u_lname, String u_email, String u_phone_number, int u_job_id, int u_department_id, double u_salary) {
+    public void updateEmployee(int id, String u_fname, String u_lname, String u_email, String u_phone_number, int u_job_id, double u_salary) {
         try {
             int i;
             if(u_fname != null || u_fname != "") {
@@ -119,14 +118,6 @@ public class Employees {
                 i = prepstmt.executeUpdate();
                 if (i > 0) {
                     System.out.println("job updated");
-                }
-            }
-            if(u_department_id > 0) {
-                PreparedStatement prepstmt = connect.prepstmt("UPDATE employee SET department_id = ? WHERE employee_id = ?");
-                prepstmt.setInt(1, u_department_id);
-                i = prepstmt.executeUpdate();
-                if (i > 0) {
-                    System.out.println("department updated");
                 }
             }
             if(u_salary > 0) {

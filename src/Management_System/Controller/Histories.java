@@ -19,9 +19,9 @@ public class Histories {
         History h;
         try {
             ResultSet myrs = connect.mystmt().executeQuery("SELECT history.employee_id, employee.first_name, employee.last_name, history.hire_date, history.end_date, job.job_name, department.department_name, branch.branch_address, branch.branch_city FROM history " +
-                    "INNER JOIN department ON department.department_id = history.department_id " +
+                    "INNER JOIN job ON job.job_id = employee.job_id " +
+                    "INNER JOIN department ON department.department_id = job.department_id " +
                     "INNER JOIN branch ON department.branch_id = branch.branch_id " +
-                    "INNER JOIN job ON job.job_id = history.job_id " +
                     "INNER JOIN employee ON employee.employee_id = history.employee_id");
             while(myrs.next()){
                 h = new History(
@@ -53,11 +53,10 @@ public class Histories {
     }
 
     //need to enter while entering new data for employee
-    public int addHistory(int job_id, int department_id){
+    public int addHistory(int job_id){
         try {
-            PreparedStatement prepstmt =  connect.con().prepareStatement("INSERT INTO history(hire_date, job_id, department_id) VALUE(CURDATE(),?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement prepstmt =  connect.con().prepareStatement("INSERT INTO history(hire_date, job_id) VALUE(CURDATE(),?)", Statement.RETURN_GENERATED_KEYS);
             prepstmt.setInt(1, job_id);
-            prepstmt.setInt(2, department_id);
 
             int i = prepstmt.executeUpdate();
             ResultSet myrs = prepstmt.getGeneratedKeys();

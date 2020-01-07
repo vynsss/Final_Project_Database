@@ -17,7 +17,6 @@ public class add_Employee extends JPanel{
     private JLabel l_email          = new JLabel("Email Address                   :");
     private JLabel l_phone_number   = new JLabel("Phone Number                       :");
     private JLabel l_job_id         = new JLabel("Job ID                            :");
-    private JLabel l_department_id  = new JLabel("Department ID                   :");
     private JLabel l_salary         = new JLabel("Salary                            :");
     //Field
     private JTextField text_fname = new JTextField(30);
@@ -25,7 +24,6 @@ public class add_Employee extends JPanel{
     private JTextField text_email = new JTextField(30);
     private JTextField text_phone_number = new JTextField(30);
     private JTextField text_job_id = new JTextField(30);
-    private JTextField text_department_id = new JTextField(30);
     private JTextField text_salary = new JTextField(30);
     //JButton
     private JButton b_add = new JButton("Add");
@@ -52,8 +50,6 @@ public class add_Employee extends JPanel{
         c.gridx = 0; c.gridy = 4; c.gridwidth = 1;
         this.add(l_job_id, c);
         c.gridx = 0; c.gridy = 5; c.gridwidth = 1;
-        this.add(l_department_id, c);
-        c.gridx = 0; c.gridy = 6; c.gridwidth = 1;
         this.add(l_salary, c);
 
         c.fill = c.NONE;
@@ -68,8 +64,6 @@ public class add_Employee extends JPanel{
         c.gridx = 1; c.gridy = 4; c.gridwidth = 1;
         this.add(text_job_id, c);
         c.gridx = 1; c.gridy = 5; c.gridwidth = 1;
-        this.add(text_department_id, c);
-        c.gridx = 1; c.gridy = 6; c.gridwidth = 1;
         this.add(text_salary, c);
 
         c.fill = c.BOTH;
@@ -87,18 +81,16 @@ public class add_Employee extends JPanel{
             String email = text_email.getText();
             String phone_number = text_phone_number.getText();
             int job_id = Integer.parseInt(text_job_id.getText());
-            int department_id = Integer.parseInt(text_department_id.getText());
             Double salary = Double.parseDouble(text_salary.getText());
 
-            int id = h.addHistory(job_id, department_id);
-            em.addEmployee(id, fname, lname, email, phone_number, job_id, department_id, salary);
+            int id = h.addHistory(job_id);
+            em.addEmployee(id, fname, lname, email, phone_number, job_id, salary);
 
             text_fname.setText("");
             text_lname.setText("");
             text_email.setText("");
             text_phone_number.setText("");
             text_job_id.setText("");
-            text_department_id.setText("");
             text_salary.setText("");
         });
     }
