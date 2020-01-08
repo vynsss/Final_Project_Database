@@ -67,15 +67,17 @@ public class view_Admin extends JPanel{
         view.add(b_log_out, cb);
 
         b_add.addActionListener(e -> {
-
+            this.removeAll();
+            this.add(new add_Admin());
+            this.revalidate();
         });
         b_remove.addActionListener(e -> {
-
+            
         });
         b_log_out.addActionListener(e -> {
-                ms.getWindow().setLogin(new Login());
-                ms.getWindow().setContentPane(ms.getWindow().getLogin());
-                ms.getWindow().revalidate();
+            ms.getWindow().setLogin(new Login());
+            ms.getWindow().setContentPane(ms.getWindow().getLogin());
+            ms.getWindow().revalidate();
         });
     }
 }
