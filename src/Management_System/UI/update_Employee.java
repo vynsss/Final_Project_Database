@@ -80,20 +80,20 @@ public class update_Employee extends JPanel{
             String job_id = text_job_id.getText();
             String salary = text_salary.getText();
 
-            int c_jobid = 0, c_fname = 0, c_lname = 0, c_email = 0, c_phone_number = 0;
-            double c_salary = .0;
-            if(job_id == "") c_jobid = -1;
-//            else c_jobid = Integer.parseInt(job_id);
+            int c_jobid = 1, c_fname = 1, c_lname = 1, c_email = 1, c_phone_number = 1;
+            double c_salary = 1.0;
+            if(job_id.length() == 0) c_jobid = 0;
+            else c_jobid = Integer.parseInt(job_id);
 
-            if(salary == "") c_salary = -1.0;
-//            else c_salary = Double.parseDouble(salary);
+            if(salary.length() == 0) c_salary = 0.0;
+            else c_salary = Double.parseDouble(salary);
 
-            if(fname == "") c_fname = -1;
-            if(lname == "") c_lname = -1;
-            if(email == "") c_email = -1;
-            if(phone_number == "") c_phone_number = -1;
+            if(fname.length() == 0) c_fname = 0;
+            if(lname.length() == 0) c_lname = 0;
+            if(email.length() == 0) c_email = 0;
+            if(phone_number.length() == 0) c_phone_number = 0;
 
-
+            System.out.println(c_email + c_fname + c_lname);
             em.updateEmployee(id, fname, lname, email, phone_number, c_jobid, c_salary, c_fname, c_lname, c_email, c_phone_number);
 
             text_fname.setText("");
