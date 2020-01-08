@@ -22,6 +22,7 @@ public class view_Employee extends JPanel {
     private JButton b_search = new JButton("Search");
     private JButton b_add = new JButton("Add");
     private JButton b_quit = new JButton("Quit");
+    private JButton b_update = new JButton("Update");
     //JTable
     private JTable table = new JTable();
 
@@ -60,6 +61,11 @@ public class view_Employee extends JPanel {
         view.add(pane, c);
 
         c.weighty = .0;
+        c.gridx = 6; c.gridy = 2; c.gridwidth = 1;
+        b_update.setBorderPainted(false);
+        b_update.setFocusPainted(false);
+        b_update.setBackground(bc);
+        view.add(b_quit, c);
         c.gridx = 7; c.gridy = 2; c.gridwidth = 1;
         b_quit.setBorderPainted(false);
         b_quit.setFocusPainted(false);
@@ -77,6 +83,16 @@ public class view_Employee extends JPanel {
             String search = text_search.getText();
             new search_Employee(search);
             text_search.setText("");
+        });
+
+        b_update.addActionListener(e -> {
+            int column = 0;
+            int row = table.getSelectedRow();
+            int id = Integer.parseInt(table.getModel().getValueAt(row, column).toString());
+
+            this.removeAll();
+            this.add(new update_Employee(id));
+            this.validate();
         });
 
         b_quit.addActionListener(e -> {
