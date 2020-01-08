@@ -17,7 +17,7 @@ public class Jobs {
         ArrayList<Job> job = new ArrayList<Job>();
         Job j;
         try {
-            ResultSet myrs = connect.mystmt().executeQuery("SELECT job.job_id, job.job_name, department.department_name, branch.branch_address, branch.branch_city FROM job " +
+            ResultSet myrs = connect.mystmt().executeQuery("SELECT job.job_id, job.job_name, job.min_salary, department.department_name, branch.branch_address, branch.branch_city FROM job " +
                     "INNER JOIN department ON department.department_id = job.department_id " +
                     "INNER JOIN branch ON branch.branch_id = department.branch_id " +
                     "ORDER BY job_name DESC");
@@ -28,7 +28,7 @@ public class Jobs {
                         String.format("%.0f", myrs.getDouble("min_salary")),
                         myrs.getString("department_name"),
                         myrs.getString("branch_address"),
-                        myrs.getString("branch-city")
+                        myrs.getString("branch_city")
                 );
                 job.add(j);
             }

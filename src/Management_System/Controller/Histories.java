@@ -19,10 +19,11 @@ public class Histories {
         History h;
         try {
             ResultSet myrs = connect.mystmt().executeQuery("SELECT history.employee_id, employee.first_name, employee.last_name, history.hire_date, history.end_date, job.job_name, department.department_name, branch.branch_address, branch.branch_city FROM history " +
+                    "INNER JOIN employee ON employee.employee_id = history.employee_id " +
                     "INNER JOIN job ON job.job_id = employee.job_id " +
                     "INNER JOIN department ON department.department_id = job.department_id " +
                     "INNER JOIN branch ON department.branch_id = branch.branch_id " +
-                    "INNER JOIN employee ON employee.employee_id = history.employee_id");
+                    "ORDER BY history.end_date DESC");
             while(myrs.next()){
                 h = new History(
                         Integer.toString(myrs.getInt("employee_id")),
