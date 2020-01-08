@@ -77,36 +77,40 @@ public class Employees {
     }
 
     //need to find a more efficient way
-    public void updateEmployee(int id, String u_fname, String u_lname, String u_email, String u_phone_number, int u_job_id, double u_salary) {
+    public void updateEmployee(int id, String u_fname, String u_lname, String u_email, String u_phone_number, int u_job_id, double u_salary, int fname, int lname, int email, int phone_number) {
         try {
             int i;
-            if(u_fname != null || u_fname != "") {
+            if(fname > 0) {
                 PreparedStatement prepstmt = connect.prepstmt("UPDATE employee SET first_name = ? WHERE employee_id = ?");
                 prepstmt.setString(1, u_fname);
+                prepstmt.setInt(2, id);
                 i = prepstmt.executeUpdate();
                 if (i > 0) {
                     System.out.println("first name updated");
                 }
             }
-            if(u_lname != null || u_lname != "") {
+            if(lname > 0) {
                 PreparedStatement prepstmt = connect.prepstmt("UPDATE employee SET last_name = ? WHERE employee_id = ?");
                 prepstmt.setString(1, u_lname);
+                prepstmt.setInt(2, id);
                 i = prepstmt.executeUpdate();
                 if (i > 0) {
                     System.out.println("last name updated");
                 }
             }
-            if(u_email != null || u_email != "") {
+            if(email > 0) {
                 PreparedStatement prepstmt = connect.prepstmt("UPDATE employee SET email = ? WHERE employee_id = ?");
                 prepstmt.setString(1, u_email);
+                prepstmt.setInt(2, id);
                 i = prepstmt.executeUpdate();
                 if (i > 0) {
                     System.out.println("email updated");
                 }
             }
-            if(u_phone_number != null || u_phone_number != "") {
+            if(phone_number > 0) {
                 PreparedStatement prepstmt = connect.prepstmt("UPDATE employee SET phone_number = ? WHERE employee_id = ?");
                 prepstmt.setString(1, u_phone_number);
+                prepstmt.setInt(2, id);
                 i = prepstmt.executeUpdate();
                 if (i > 0) {
                     System.out.println("phone number updated");
@@ -115,6 +119,7 @@ public class Employees {
             if(u_job_id > 0) {
                 PreparedStatement prepstmt = connect.prepstmt("UPDATE employee SET job_id = ? WHERE employee_id = ?");
                 prepstmt.setInt(1, u_job_id);
+                prepstmt.setInt(2, id);
                 i = prepstmt.executeUpdate();
                 if (i > 0) {
                     System.out.println("job updated");
@@ -123,6 +128,7 @@ public class Employees {
             if(u_salary > 0) {
                 PreparedStatement prepstmt = connect.prepstmt("UPDATE employee SET salary = ? WHERE employee_id = ?");
                 prepstmt.setDouble(1, u_salary);
+                prepstmt.setInt(2, id);
                 i = prepstmt.executeUpdate();
                 if (i > 0) {
                     System.out.println("salary updated");

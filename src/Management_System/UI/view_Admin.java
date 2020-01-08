@@ -72,7 +72,7 @@ public class view_Admin extends JPanel{
             this.revalidate();
         });
         b_remove.addActionListener(e -> {
-            
+
         });
         b_log_out.addActionListener(e -> {
             ms.getWindow().setLogin(new Login());

@@ -62,5 +62,6 @@ public class add_Job extends JPanel{
 
             text_name.setText("");
             text_min_salary.setText("");
+            text_department_id.setText("");
         });}
 }

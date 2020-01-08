@@ -65,7 +65,7 @@ public class view_Employee extends JPanel {
         b_update.setBorderPainted(false);
         b_update.setFocusPainted(false);
         b_update.setBackground(bc);
-        view.add(b_quit, c);
+        view.add(b_update, c);
         c.gridx = 7; c.gridy = 2; c.gridwidth = 1;
         b_quit.setBorderPainted(false);
         b_quit.setFocusPainted(false);

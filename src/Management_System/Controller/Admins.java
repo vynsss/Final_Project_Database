@@ -12,6 +12,8 @@ public class Admins {
 
     Connection connect = new Connection();
 
+    private static String user;
+
     public static ArrayList<Admin> getJobs(){
         Connection connect = new Connection();
         ArrayList<Admin> admin = new ArrayList<Admin>();
@@ -43,7 +45,7 @@ public class Admins {
     }
 
     public void addAdmin(String username, String password){
-        if(chekadmin(username, password)) {
+        if(!chekadmin(username, password)) {
             try {
                 PreparedStatement prepstmt = connect.prepstmt("INSERT INTO admin(username, password) " +
                         "VALUES(?,?)");

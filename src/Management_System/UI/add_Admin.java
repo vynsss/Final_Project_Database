@@ -11,10 +11,10 @@ public class add_Admin extends JPanel {
 
     //JLabel
     private JLabel l_user = new JLabel("User Name               :");
-    private JLabel l_password = new JLabel("Password                        :");
+    private JLabel l_password = new JLabel("Password                :");
     //Field
-    private JTextField text_user = new JTextField(30);
-    private JTextField text_password = new JTextField(30);
+    private JTextField text_user = new JTextField(50);
+    private JTextField text_password = new JTextField(50);
     //JButton
     private JButton b_add = new JButton("Add");
 
@@ -26,22 +26,23 @@ public class add_Admin extends JPanel {
         Color bc = new Color(173, 196, 206);
 
         GridBagConstraints c = new GridBagConstraints();
-        c.insets = new Insets(3,3,3,10);
+        c.insets = new Insets(3,3,3,3);
 
-        c.weightx = 1.0; c.fill = c.BOTH;
+ c.fill = c.BOTH;
         c.gridx = 0; c.gridy = 0; c.gridwidth = 1;
         this.add(l_user, c);
         c.gridx = 0; c.gridy = 1; c.gridwidth = 1;
         this.add(l_password, c);
 
-        c.fill = c.NONE;
-        c.gridx = 1; c.gridy = 0; c.gridwidth = 1;
+//        c.fill = c.NONE;
+        c.weightx = 1.0;
+        c.gridx = 1; c.gridy = 0; c.gridwidth = 2;
         this.add(text_user, c);
-        c.gridx = 1; c.gridy = 1; c.gridwidth = 1;
+        c.gridx = 1; c.gridy = 1; c.gridwidth = 2;
         this.add(text_password, c);
 
         c.fill = c.BOTH;
-        c.gridx = 3; c.gridy = 9; c.gridwidth = 1;
+        c.gridx = 2; c.gridy = 2; c.gridwidth = 1;
         b_add.setBorderPainted(false);
         b_add.setFocusPainted(false);
         b_add.setBackground(bc);
