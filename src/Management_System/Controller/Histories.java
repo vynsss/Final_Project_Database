@@ -67,7 +67,7 @@ public class Histories {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
+        return 0;
     }
 
     //to update when is the end date of the employee
